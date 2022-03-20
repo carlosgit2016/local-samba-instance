@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  local_shared:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      replicas: 1
+    container_name: local-sharing
+    command: '-p -u "workstation1;badpass123" -s "shared;/share"'
+    volumes:
+      - /mnt/shared:/share
+    ports:
+      - "139:139"
+      - "445:445"
+      
