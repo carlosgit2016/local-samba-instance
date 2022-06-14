@@ -7,10 +7,11 @@ services:
     deploy:
       replicas: 1
     container_name: local-sharing
-    command: '-p -u "workstation1;badpass123" -s "shared;/share"'
+    command: '-p -u "workstation1;badpass123" -s "shared;/share" -n'
     volumes:
       - /mnt/shared:/share
     ports:
       - "139:139"
       - "445:445"
-      
+      - "137:137/udp"
+      - 138:138/udp
